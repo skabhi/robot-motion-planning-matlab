@@ -44,7 +44,9 @@ Three new environments extend the original scenario collection:
 
 `manipulator-configuration-space/` samples the two joint angles of a planar 2R arm and classifies configurations by collision with rectangular, circular, and triangular obstacles. It visualizes both the Cartesian obstacle field and the corresponding occupied/free configuration space.
 
-![Two-link manipulator configuration space](manipulator-configuration-space/figures/configuration_space.svg)
+| Cartesian workspace and obstacles | Manipulator configuration space |
+| --- | --- |
+| ![2R manipulator Cartesian workspace](manipulator-configuration-space/figures/cartesian_obstacle_field.svg) | ![Two-link manipulator configuration space](manipulator-configuration-space/figures/configuration_space.svg) |
 
 Run:
 
