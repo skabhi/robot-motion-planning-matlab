@@ -182,6 +182,60 @@ classdef obstaclefield < handle
             obj.draw;
         end
 
+        % Alternating-wall slalom
+        function setfield7(obj)
+            obj.bnd = obj.bnd.set(-10,10,-10,10);
+            obj.bnd.drawboundary;
+
+            wall1 = Obstacle('rectangle');
+            wall1 = wall1.setRectangle([-5 -10 0],[0.6 12],'blue');
+
+            wall2 = Obstacle('rectangle');
+            wall2 = wall2.setRectangle([0 -2 0],[0.6 12],'blue');
+
+            wall3 = Obstacle('rectangle');
+            wall3 = wall3.setRectangle([5 -10 0],[0.6 12],'blue');
+
+            obj.obsfield = ObjectArray([wall1,wall2,wall3]);
+            obj.validqstart([-9,-8]);
+            obj.draw;
+        end
+
+        % U-shaped cul-de-sac with the start inside the pocket
+        function setfield8(obj)
+            obj.bnd = obj.bnd.set(-10,10,-10,10);
+            obj.bnd.drawboundary;
+
+            bottom = Obstacle('rectangle');
+            bottom = bottom.setRectangle([-4 -8 0],[8 0.5],'blue');
+
+            left = Obstacle('rectangle');
+            left = left.setRectangle([-4 -8 0],[0.5 8],'blue');
+
+            right = Obstacle('rectangle');
+            right = right.setRectangle([3.5 -8 0],[0.5 8],'blue');
+
+            obj.obsfield = ObjectArray([bottom,left,right]);
+            obj.validqstart([0,-5]);
+            obj.draw;
+        end
+
+        % S-corridor formed by two offset horizontal walls
+        function setfield9(obj)
+            obj.bnd = obj.bnd.set(-10,10,-10,10);
+            obj.bnd.drawboundary;
+
+            lower = Obstacle('rectangle');
+            lower = lower.setRectangle([-10 -2 0],[16 0.6],'blue');
+
+            upper = Obstacle('rectangle');
+            upper = upper.setRectangle([-6 2 0],[16 0.6],'blue');
+
+            obj.obsfield = ObjectArray([lower,upper]);
+            obj.validqstart([0,-8]);
+            obj.draw;
+        end
+
         % check if start position is valid
         function validqstart(obj,qstart)
             if(obj.obsfield.isinside(qstart))

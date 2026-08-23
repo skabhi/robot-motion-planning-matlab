@@ -26,6 +26,18 @@ The planner supports:
 
 The separate development copies used while building the RRT class are intentionally omitted. Their useful capabilities are already incorporated and extended in `rrt-path-planning/rrt.m`.
 
+### Additional challenge environments
+
+Three new environments extend the original scenario collection:
+
+- **Alternating-wall slalom:** three offset gates require repeated changes in travel direction.
+- **U-shaped cul-de-sac:** the start lies inside a pocket while the goal is outside and behind a wall, forcing exploration away from the tempting direct route.
+- **S-corridor:** two offset walls require the tree to find openings on opposite sides of the workspace.
+
+| Alternating-wall slalom | U-shaped cul-de-sac | S-corridor |
+| --- | --- | --- |
+| ![RRT slalom](rrt-path-planning/figures/slalom_corridor.svg) | ![RRT U-trap](rrt-path-planning/figures/u_trap.svg) | ![RRT S-corridor](rrt-path-planning/figures/s_corridor.svg) |
+
 ## Included studies
 
 ### 1. Planar manipulator configuration space
@@ -66,6 +78,9 @@ demo_mixed_obstacles
 demo_four_blocks
 demo_wall_environment
 demo_narrow_corridor
+demo_slalom_corridor
+demo_u_trap
+demo_s_corridor
 ```
 
 RRT construction is stochastic, so the generated tree, node count, path, and path length vary between runs.
@@ -124,6 +139,8 @@ The reorganized repository was checked with MATLAB R2023b on August 23, 2026:
 - the complete 2R configuration-space scan completed;
 - the artificial potential-field gain comparison brought all three robots within the configured `0.1` goal tolerance; and
 - the mixed-obstacle RRT demonstration reached the goal, reconstructed its path, and reported the resulting node count and path length.
+- the new slalom, U-trap, and S-corridor planners all reached their targets and reconstructed collision-checked paths; and
+- the corrected potential-field README figure terminates within the configured `0.1` goal tolerance rather than at a local minimum.
 
 The RRT verification used a fixed random seed only to make the test repeatable. The demonstration scripts retain their original stochastic behavior.
 
