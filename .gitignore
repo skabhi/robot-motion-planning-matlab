@@ -1,0 +1,18 @@
+# MATLAB temporary and generated files
+*.asv
+*.m~
+*.autosave
+*.mat
+*.fig
+*.eps
+slprj/
+codegen/
+*.mex*
+
+# Generated output directories
+output/
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+desktop.ini
